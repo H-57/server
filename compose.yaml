@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: .  # Replace with your actual directory path
+    container_name: backend_notes
+    ports:
+      - "4000:3000"
+    environment:
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongo:27017/notes
+    networks:
+      - app_network
+
+ 
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
